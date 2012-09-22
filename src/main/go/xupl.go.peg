@@ -1,0 +1,7 @@
+package main
+
+type Xupl Peg {
+  node.Node
+}
+
+xupl <- 'xupl' ?
