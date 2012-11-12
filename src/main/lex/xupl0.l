@@ -58,3 +58,8 @@ loop:
 	if (c != 0)
 		;//putchar(c1);
 }
+
+main()
+{
+  yylex();
+}
