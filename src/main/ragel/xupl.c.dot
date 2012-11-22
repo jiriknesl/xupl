@@ -1,0 +1,36 @@
+digraph xupl {
+	rankdir=LR;
+	node [ shape = point ];
+	ENTRY;
+	en_5;
+	en_6;
+	eof_6;
+	eof_7;
+	eof_8;
+	eof_9;
+	node [ shape = circle, height = 0.2 ];
+	node [ fixedsize = true, height = 0.65, shape = doublecircle ];
+	6;
+	7;
+	8;
+	9;
+	node [ shape = circle ];
+	1 -> 2 [ label = "'x'" ];
+	2 -> 3 [ label = "'m'" ];
+	3 -> 4 [ label = "'l'" ];
+	4 -> 8 [ label = "'A'" ];
+	5 -> 9 [ label = "'X'" ];
+	6 -> 7 [ label = "'\\t'..'\\r', SP" ];
+	6 -> 1 [ label = "'?'" ];
+	7 -> 7 [ label = "'\\t'..'\\r', SP" ];
+	8 -> 7 [ label = "'\\t'..'\\r', SP" ];
+	8 -> 8 [ label = "'A'" ];
+	9 -> 9 [ label = "'X'" ];
+	ENTRY -> 6 [ label = "IN" ];
+	en_5 -> 5 [ label = "doctype" ];
+	en_6 -> 6 [ label = "main" ];
+	6 -> eof_6 [ label = "EOF / doctype" ];
+	7 -> eof_7 [ label = "EOF / doctype" ];
+	8 -> eof_8 [ label = "EOF / doctype" ];
+	9 -> eof_9 [ label = "EOF / final" ];
+}

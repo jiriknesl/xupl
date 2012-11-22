@@ -1,0 +1,19 @@
+digraph xupl {
+  rankdir=LR;
+  size="8,5"
+
+  attrdecl [label="attribute"];
+
+  xupl -> xmldecl -> DOC;
+  xmldecl -> element;
+  xmldecl -> attrdecl -> attrdecl;
+  attrdecl -> DOC;
+  xupl -> DOC -> element;
+  xupl -> element;
+
+  element -> element;
+  element -> attribute -> attribute -> element;
+  element -> body;
+  body -> element;
+
+}
