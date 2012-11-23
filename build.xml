@@ -21,6 +21,22 @@
     </java>
   </target>
 
+  <target name="compile" depends="generate">
+    <javac destdir="bin" classpathref="classpath">
+      <src path="src/main/java"/>
+    </javac>
+  </target>
+
+  <target name="test" depends="compile">
+    <java classname="org.antlr.v4.runtime.misc.TestRig" classpathref="classpath" fork="true">
+      <arg value="org.nicerobot.xupl.parser.Xupl" />
+      <arg value="xupl" />
+      <arg value="-tree" />
+      <arg value="-tokens" />
+      <arg value="src/test/resources/test.xupl" />
+    </java>
+  </target>
+
   <target name="hello">
     <mkdir dir="${hello}" />
     <java classname="org.antlr.v4.Tool" classpathref="classpath" fork="true">
@@ -31,15 +47,23 @@
       <arg value="-listener" />
       <arg value="${src}/Hello.g4" />
     </java>
+    <antcall target="compile"/>
+    <java classname="org.antlr.v4.runtime.misc.TestRig" classpathref="classpath" fork="true">
+      <arg value="org.nicerobot.hello.parser.Hello" />
+      <arg value="r" />
+      <arg value="-tree" />
+      <arg value="-tokens" />
+      <arg value="src/test/resources/hello.txt" />
+    </java>
   </target>
 
-  <target name="showtree" depends="generate">
-    <input message="Enter Script To Test:" addproperty="test.script" defaultvalue="src/test/resources/test.xupl" />
+  <target name="asktest" depends="compile">
+    <input message="Enter Script To Test:" addproperty="test.script" defaultvalue="test" />
     <java classname="org.antlr.v4.runtime.misc.TestRig" classpathref="classpath" fork="true">
       <arg value="org.nicerobot.xupl.parser.Xupl" />
       <arg value="xupl" />
       <arg value="-tree" />
-      <arg value="${test.script}" />
+      <arg value="src/test/resources/${test.script}.xupl" />
     </java>
   </target>
 

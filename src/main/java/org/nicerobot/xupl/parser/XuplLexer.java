@@ -17,17 +17,17 @@ public class XuplLexer extends Lexer {
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
 	public static final int
-		NAME=1, VALUE=2, NEXT=3, OPEN=4, CLOSE=5, WS=6;
+		WS=1, NAME=2, VALUE=3, NEXT=4, OPEN=5, CLOSE=6;
 	public static String[] modeNames = {
 		"DEFAULT_MODE"
 	};
 
 	public static final String[] tokenNames = {
 		"<INVALID>",
-		"NAME", "VALUE", "NEXT", "OPEN", "CLOSE", "WS"
+		"WS", "NAME", "VALUE", "NEXT", "OPEN", "CLOSE"
 	};
 	public static final String[] ruleNames = {
-		"NAME", "VALUE", "NEXT", "OPEN", "CLOSE", "WS"
+		"WS", "NAME", "VALUE", "START", "BLOCK", "NSB", "NEXT", "OPEN", "CLOSE"
 	};
 
 
@@ -55,15 +55,26 @@ public class XuplLexer extends Lexer {
 	@Override
 	public void action(RuleContext _localctx, int ruleIndex, int actionIndex) {
 		switch ( ruleIndex ) {
-			case 0 : NAME_action((RuleContext)_localctx, actionIndex); break;
-			case 1 : VALUE_action((RuleContext)_localctx, actionIndex); break;
-			case 2 : NEXT_action((RuleContext)_localctx, actionIndex); break;
-			case 3 : OPEN_action((RuleContext)_localctx, actionIndex); break;
-			case 4 : CLOSE_action((RuleContext)_localctx, actionIndex); break;
-			case 5 : WS_action((RuleContext)_localctx, actionIndex); break;
+			case 0 : WS_action((RuleContext)_localctx, actionIndex); break;
+			case 1 : NAME_action((RuleContext)_localctx, actionIndex); break;
+			case 2 : VALUE_action((RuleContext)_localctx, actionIndex); break;
+			case 3 : START_action((RuleContext)_localctx, actionIndex); break;
+			case 4 : BLOCK_action((RuleContext)_localctx, actionIndex); break;
+			case 5 : NSB_action((RuleContext)_localctx, actionIndex); break;
+			case 6 : NEXT_action((RuleContext)_localctx, actionIndex); break;
+			case 7 : OPEN_action((RuleContext)_localctx, actionIndex); break;
+			case 8 : CLOSE_action((RuleContext)_localctx, actionIndex); break;
 		}
 	}
 	public void OPEN_action(RuleContext _localctx, int actionIndex) {
+		switch ( actionIndex ) {
+		}
+	}
+	public void NSB_action(RuleContext _localctx, int actionIndex) {
+		switch ( actionIndex ) {
+		}
+	}
+	public void START_action(RuleContext _localctx, int actionIndex) {
 		switch ( actionIndex ) {
 		}
 	}
@@ -88,22 +99,28 @@ public class XuplLexer extends Lexer {
 		switch ( actionIndex ) {
 		}
 	}
+	public void BLOCK_action(RuleContext _localctx, int actionIndex) {
+		switch ( actionIndex ) {
+		}
+	}
 
 	public static final String _serializedATN =
-		"\2\6)\6\uffff\2\0\7\0\2\1\7\1\2\2\7\2\2\3\7\3\2\4\7\4\2\5\7\5\1\0\1\0"+
-		"\5\0\20\b\0\n\0\f\0\23\t\0\1\1\1\1\5\1\27\b\1\n\1\f\1\32\t\1\1\2\1\2\1"+
-		"\3\1\3\1\4\1\4\1\5\5\5#\b\5\n\5\f\5&\t\5\1\5\1\5\6\1\1\uffff\3\2\uffff"+
-		"\5\3\uffff\7\4\uffff\t\5\uffff\13\6\0\1\0\b\3AZ__az\t\t\n  (),,..::[]"+
-		"{{}}\n\t\n  (),,..::A]__a{}}\t\t\n  (),,..::[]{{}}\1,,\3::\\\\{{\3..\\"+
-		"\\}}\2\t\n  +\0\1\1\0\0\0\0\3\1\0\0\0\0\5\1\0\0\0\0\7\1\0\0\0\0\t\1\0"+
-		"\0\0\0\13\1\0\0\0\1\r\1\0\0\0\3\24\1\0\0\0\5\33\1\0\0\0\7\35\1\0\0\0\t"+
-		"\37\1\0\0\0\13$\1\0\0\0\r\21\7\0\0\0\16\20\b\1\0\0\17\16\1\0\0\0\20\23"+
-		"\1\0\0\0\21\17\1\0\0\0\21\22\1\0\0\0\22\2\1\0\0\0\23\21\1\0\0\0\24\30"+
-		"\b\2\0\0\25\27\b\3\0\0\26\25\1\0\0\0\27\32\1\0\0\0\30\26\1\0\0\0\30\31"+
-		"\1\0\0\0\31\4\1\0\0\0\32\30\1\0\0\0\33\34\7\4\0\0\34\6\1\0\0\0\35\36\7"+
-		"\5\0\0\36\b\1\0\0\0\37 \7\6\0\0 \n\1\0\0\0!#\7\7\0\0\"!\1\0\0\0#&\1\0"+
-		"\0\0$\"\1\0\0\0$%\1\0\0\0%\'\1\0\0\0&$\1\0\0\0\'(\6\5\0\0(\f\1\0\0\0\4"+
-		"\0\21\30$";
+		"\2\6\65\6\uffff\2\0\7\0\2\1\7\1\2\2\7\2\2\3\7\3\2\4\7\4\2\5\7\5\2\6\7"+
+		"\6\2\7\7\7\2\b\7\b\1\0\5\0\25\b\0\n\0\f\0\30\t\0\1\0\1\0\1\1\1\1\5\1\36"+
+		"\b\1\n\1\f\1!\t\1\1\2\1\2\5\2%\b\2\n\2\f\2(\t\2\1\3\1\3\1\4\1\4\1\5\1"+
+		"\5\1\6\1\6\1\7\1\7\1\b\1\b\t\1\1\0\3\2\uffff\5\3\uffff\7\0\uffff\t\0\uffff"+
+		"\13\0\uffff\r\4\uffff\17\5\uffff\21\6\uffff\1\0\7\3\t\n\r\r  \3AZ__az"+
+		"\n\t\n\r\r  (),,..::[]{{}}\13\t\n\r\r  (),,..::A]__a{}}\1,,\3::\\\\{{"+
+		"\3..\\\\}}\64\0\1\1\0\0\0\0\3\1\0\0\0\0\5\1\0\0\0\0\r\1\0\0\0\0\17\1\0"+
+		"\0\0\0\21\1\0\0\0\1\26\1\0\0\0\3\33\1\0\0\0\5\"\1\0\0\0\7)\1\0\0\0\t+"+
+		"\1\0\0\0\13-\1\0\0\0\r/\1\0\0\0\17\61\1\0\0\0\21\63\1\0\0\0\23\25\7\0"+
+		"\0\0\24\23\1\0\0\0\25\30\1\0\0\0\26\24\1\0\0\0\26\27\1\0\0\0\27\31\1\0"+
+		"\0\0\30\26\1\0\0\0\31\32\6\0\0\0\32\2\1\0\0\0\33\37\3\7\3\0\34\36\3\t"+
+		"\4\0\35\34\1\0\0\0\36!\1\0\0\0\37\35\1\0\0\0\37 \1\0\0\0 \4\1\0\0\0!\37"+
+		"\1\0\0\0\"&\3\13\5\0#%\3\t\4\0$#\1\0\0\0%(\1\0\0\0&$\1\0\0\0&\'\1\0\0"+
+		"\0\'\6\1\0\0\0(&\1\0\0\0)*\7\1\0\0*\b\1\0\0\0+,\b\2\0\0,\n\1\0\0\0-.\b"+
+		"\3\0\0.\f\1\0\0\0/\60\7\4\0\0\60\16\1\0\0\0\61\62\7\5\0\0\62\20\1\0\0"+
+		"\0\63\64\7\6\0\0\64\22\1\0\0\0\4\0\26\37&";
 	public static final ATN _ATN =
 		ATNSimulator.deserialize(_serializedATN.toCharArray());
 	static {

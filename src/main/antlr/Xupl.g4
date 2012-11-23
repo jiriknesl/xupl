@@ -16,18 +16,15 @@ name    : NAME;
 
 value   : VALUE;
 
-NAME    : START ~(BLOCK)*;
+WS      : [ \r\t\n]* -> skip;
 
-START   : [a-zA-Z_];
+NAME    : START (BLOCK)*;
+VALUE   : NSB (BLOCK)*;
 
-VALUE   : ~(START|BLOCK) ~(BLOCK)*;
-
-BLOCK   : [ \t\n\{\}\[\]\(\):.,];
+fragment START   : [a-zA-Z_];
+fragment BLOCK   : ~[ \r\t\n\{\}\[\]\(\):.,];
+fragment NSB     : ~[a-zA-Z_ \r\t\n\{\}\[\]\(\):.,];
 
 NEXT    : [,];
-
 OPEN    : [\{:];
-
 CLOSE   : [\}.];
-
-WS      : [ \t\n]* -> skip;

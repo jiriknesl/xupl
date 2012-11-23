@@ -17,17 +17,17 @@ public class HelloLexer extends Lexer {
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
 	public static final int
-		T__0=1, NAME=2, WS=3;
+		T__0=1, WS=2, NAME=3, VALUE=4;
 	public static String[] modeNames = {
 		"DEFAULT_MODE"
 	};
 
 	public static final String[] tokenNames = {
 		"<INVALID>",
-		"'hello'", "NAME", "WS"
+		"'hello'", "WS", "NAME", "VALUE"
 	};
 	public static final String[] ruleNames = {
-		"T__0", "NAME", "WS"
+		"T__0", "WS", "NAME", "VALUE", "START", "BLOCK"
 	};
 
 
@@ -56,8 +56,15 @@ public class HelloLexer extends Lexer {
 	public void action(RuleContext _localctx, int ruleIndex, int actionIndex) {
 		switch ( ruleIndex ) {
 			case 0 : T__0_action((RuleContext)_localctx, actionIndex); break;
-			case 1 : NAME_action((RuleContext)_localctx, actionIndex); break;
-			case 2 : WS_action((RuleContext)_localctx, actionIndex); break;
+			case 1 : WS_action((RuleContext)_localctx, actionIndex); break;
+			case 2 : NAME_action((RuleContext)_localctx, actionIndex); break;
+			case 3 : VALUE_action((RuleContext)_localctx, actionIndex); break;
+			case 4 : START_action((RuleContext)_localctx, actionIndex); break;
+			case 5 : BLOCK_action((RuleContext)_localctx, actionIndex); break;
+		}
+	}
+	public void START_action(RuleContext _localctx, int actionIndex) {
+		switch ( actionIndex ) {
 		}
 	}
 	public void NAME_action(RuleContext _localctx, int actionIndex) {
@@ -69,21 +76,34 @@ public class HelloLexer extends Lexer {
 			case 0 : skip();  break;
 		}
 	}
+	public void VALUE_action(RuleContext _localctx, int actionIndex) {
+		switch ( actionIndex ) {
+		}
+	}
+	public void BLOCK_action(RuleContext _localctx, int actionIndex) {
+		switch ( actionIndex ) {
+		}
+	}
 	public void T__0_action(RuleContext _localctx, int actionIndex) {
 		switch ( actionIndex ) {
 		}
 	}
 
 	public static final String _serializedATN =
-		"\2\3\34\6\uffff\2\0\7\0\2\1\7\1\2\2\7\2\1\0\1\0\1\0\1\0\1\0\1\0\1\1\1"+
-		"\1\5\1\20\b\1\n\1\f\1\23\t\1\1\2\5\2\26\b\2\n\2\f\2\31\t\2\1\2\1\2\3\1"+
-		"\1\uffff\3\2\uffff\5\3\0\1\0\3\1AZ\1\609\2\t\n  \35\0\1\1\0\0\0\0\3\1"+
-		"\0\0\0\0\5\1\0\0\0\1\7\1\0\0\0\3\r\1\0\0\0\5\27\1\0\0\0\7\b\5h\0\0\b\t"+
-		"\5e\0\0\t\n\5l\0\0\n\13\5l\0\0\13\f\5o\0\0\f\2\1\0\0\0\r\21\7\0\0\0\16"+
-		"\20\b\1\0\0\17\16\1\0\0\0\20\23\1\0\0\0\21\17\1\0\0\0\21\22\1\0\0\0\22"+
-		"\4\1\0\0\0\23\21\1\0\0\0\24\26\7\2\0\0\25\24\1\0\0\0\26\31\1\0\0\0\27"+
-		"\25\1\0\0\0\27\30\1\0\0\0\30\32\1\0\0\0\31\27\1\0\0\0\32\33\6\2\0\0\33"+
-		"\6\1\0\0\0\3\0\21\27";
+		"\2\4-\6\uffff\2\0\7\0\2\1\7\1\2\2\7\2\2\3\7\3\2\4\7\4\2\5\7\5\1\0\1\0"+
+		"\1\0\1\0\1\0\1\0\1\1\5\1\25\b\1\n\1\f\1\30\t\1\1\1\1\1\1\2\1\2\5\2\36"+
+		"\b\2\n\2\f\2!\t\2\1\3\1\3\5\3%\b\3\n\3\f\3(\t\3\1\4\1\4\1\5\1\5\6\1\1"+
+		"\uffff\3\2\0\5\3\uffff\7\4\uffff\t\0\uffff\13\0\uffff\1\0\4\3\t\n\r\r"+
+		"  \13\t\n\r\r  (),,..::A]__a{}}\3AZ__az\n\t\n\r\r  (),,..::[]{{}}-\0\1"+
+		"\1\0\0\0\0\3\1\0\0\0\0\5\1\0\0\0\0\7\1\0\0\0\1\r\1\0\0\0\3\26\1\0\0\0"+
+		"\5\33\1\0\0\0\7\"\1\0\0\0\t)\1\0\0\0\13+\1\0\0\0\r\16\5h\0\0\16\17\5e"+
+		"\0\0\17\20\5l\0\0\20\21\5l\0\0\21\22\5o\0\0\22\2\1\0\0\0\23\25\7\0\0\0"+
+		"\24\23\1\0\0\0\25\30\1\0\0\0\26\24\1\0\0\0\26\27\1\0\0\0\27\31\1\0\0\0"+
+		"\30\26\1\0\0\0\31\32\6\1\0\0\32\4\1\0\0\0\33\37\3\t\4\0\34\36\3\13\5\0"+
+		"\35\34\1\0\0\0\36!\1\0\0\0\37\35\1\0\0\0\37 \1\0\0\0 \6\1\0\0\0!\37\1"+
+		"\0\0\0\"&\b\1\0\0#%\3\13\5\0$#\1\0\0\0%(\1\0\0\0&$\1\0\0\0&\'\1\0\0\0"+
+		"\'\b\1\0\0\0(&\1\0\0\0)*\7\2\0\0*\n\1\0\0\0+,\b\3\0\0,\f\1\0\0\0\4\0\26"+
+		"\37&";
 	public static final ATN _ATN =
 		ATNSimulator.deserialize(_serializedATN.toCharArray());
 	static {
