@@ -16,9 +16,13 @@ name    : NAME;
 
 value   : VALUE;
 
-NAME    : [a-zA-Z_] ~([ \t\n\{\}\[\]\(\):.,])*;
+NAME    : START ~(BLOCK)*;
 
-VALUE   : ~([ \t\n\{\}\[\]\(\):.,a-zA-Z_]) ~([ \t\n[\{\}\[\]\(\):.,])*;
+START   : [a-zA-Z_];
+
+VALUE   : ~(START|BLOCK) ~(BLOCK)*;
+
+BLOCK   : [ \t\n\{\}\[\]\(\):.,];
 
 NEXT    : [,];
 
