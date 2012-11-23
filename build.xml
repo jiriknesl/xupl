@@ -1,6 +1,7 @@
 <project name="xupl" default="generate" basedir=".">
   <property name="src" location="src/main/antlr" />
   <property name="gen" location="src/main/java/org/nicerobot/xupl/parser" />
+  <property name="hello" location="src/main/java/org/nicerobot/hello/parser" />
   <property name="package" value="Xupl" />
 
   <path id="classpath">
@@ -20,13 +21,19 @@
     </java>
   </target>
 
-  <target name="test">
-    <java classname="org.nicerobot.xupl.Main" classpathref="classpath" fork="true">
-      <arg value="src/test/resources/test.xupl" />
+  <target name="hello">
+    <mkdir dir="${hello}" />
+    <java classname="org.antlr.v4.Tool" classpathref="classpath" fork="true">
+      <arg value="-o" />
+      <arg path="${hello}" />
+      <arg value="-lib" />
+      <arg path="${src}" />
+      <arg value="-listener" />
+      <arg value="${src}/Hello.g4" />
     </java>
   </target>
 
-  <target name="showtree">
+  <target name="showtree" depends="generate">
     <input message="Enter Script To Test:" addproperty="test.script" defaultvalue="src/test/resources/test.xupl" />
     <java classname="org.antlr.v4.runtime.misc.TestRig" classpathref="classpath" fork="true">
       <arg value="org.nicerobot.xupl.parser.Xupl" />

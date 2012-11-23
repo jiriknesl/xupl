@@ -13,18 +13,18 @@ public class XuplListener extends XuplBaseListener implements ParseTreeListener<
   }
 
   @Override
-  public void exitAttrs (XuplParser.AttrsContext ctx) {
-    System.out.printf("exitAttrs %s\n", ctx);
-  }
-
-  @Override
   public void exitName (XuplParser.NameContext ctx) {
-    System.out.printf("exitName %s\n", ctx.ID().getText());
+    System.out.printf("exitName %s\n", ctx.getText());
   }
 
   @Override
   public void exitValue (XuplParser.ValueContext ctx) {
-    System.out.printf("exitValue %s\n", ctx);
+    System.out.printf("exitValue %s\n", ctx.getText());
+  }
+
+  @Override
+  public void exitAttrs (XuplParser.AttrsContext ctx) {
+    System.out.printf("exitAttrs %s\n", ctx.getText());
   }
 
   @Override
@@ -34,7 +34,7 @@ public class XuplListener extends XuplBaseListener implements ParseTreeListener<
 
   @Override
   public void exitAttr (XuplParser.AttrContext ctx) {
-    System.out.printf("exitAttr %s\n", ctx);
+    System.out.printf("exitAttr %s=\"%s\"\n", ctx.name().getText(), ctx.value().getText());
   }
 
   @Override

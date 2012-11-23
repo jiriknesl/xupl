@@ -6,29 +6,24 @@ package org.nicerobot.xupl.parser;
 
 xupl    : node EOF;
 
-node    : WS* name attrs? ( OPEN node+ CLOSE )? ;
+node    : name attrs? ( OPEN node+ CLOSE )? ;
 
-attrs   : SPACE+ attr ( SPACE? ',' SPACE? attr )*;
+attrs   : attr ( NEXT attr )*;
 
 attr    : name value | value name;
 
-name    : ID;
+name    : NAME;
 
-value   : ~(ID);
+value   : VALUE;
 
+NAME    : [a-zA-Z_] ~([ \t\n\{\}\[\]\(\):.,])*;
 
-START   : 'a'..'z'|'A'..'Z'|'_';
+VALUE   : ~([ \t\n\{\}\[\]\(\):.,a-zA-Z_]) ~([ \t\n[\{\}\[\]\(\):.,])*;
 
-BLOCK   : '('|'['|OPEN|CLOSE|']'|')';
+NEXT    : [,];
 
-ID      : START ~(WS|BLOCK)*;
+OPEN    : [\{:];
 
-NID     : ~(START) ~(WS|BLOCK)*;
+CLOSE   : [\}.];
 
-OPEN    : '{'|':';
-
-CLOSE   : '}'|'.';
-
-SPACE   : ' '|'\t';
-
-WS      : SPACE|'\n';
+WS      : [ \t\n]* -> skip;
