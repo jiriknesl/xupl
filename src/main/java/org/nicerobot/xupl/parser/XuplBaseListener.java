@@ -18,6 +18,8 @@ public class XuplBaseListener implements XuplListener {
 	@Override public void exitValue(XuplParser.ValueContext ctx) { }
 	@Override public void enterXupl(XuplParser.XuplContext ctx) { }
 	@Override public void exitXupl(XuplParser.XuplContext ctx) { }
+	@Override public void enterBlock(XuplParser.BlockContext ctx) { }
+	@Override public void exitBlock(XuplParser.BlockContext ctx) { }
 	@Override public void enterAttr(XuplParser.AttrContext ctx) { }
 	@Override public void exitAttr(XuplParser.AttrContext ctx) { }
 

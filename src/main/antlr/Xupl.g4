@@ -6,7 +6,9 @@ package org.nicerobot.xupl.parser;
 
 xupl    : node EOF;
 
-node    : name attrs? ( OPEN node+ CLOSE )? ;
+node    : name attrs? block? ;
+
+block   : OPEN node+ CLOSE ;
 
 attrs   : attr ( NEXT attr )*;
 

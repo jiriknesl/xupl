@@ -15,6 +15,8 @@ public interface XuplListener extends ParseTreeListener<Token> {
 	void exitValue(XuplParser.ValueContext ctx);
 	void enterXupl(XuplParser.XuplContext ctx);
 	void exitXupl(XuplParser.XuplContext ctx);
+	void enterBlock(XuplParser.BlockContext ctx);
+	void exitBlock(XuplParser.BlockContext ctx);
 	void enterAttr(XuplParser.AttrContext ctx);
 	void exitAttr(XuplParser.AttrContext ctx);
 }
